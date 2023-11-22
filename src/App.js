@@ -10,23 +10,30 @@ import Home from './Pages/Home';
 import Notfound from './Pages/Notfound';
 
 function App() {
-const [cart ,setCart]= useState([])
+  const [name , setName]=useState("Bhuban")
+const [cart, setCart]= useState([])
+const [detail, setDetail]= useState("")
 
 const addtocart = (food)=>{
-const newarry = [...cart, food]
-setCart(newarry)
-
+  const newcart = [...cart , food]
+  setCart(newcart)
 }
 
 console.log(cart)
+
+const fooddetail = (food)=>{
+setDetail(food)
+}
+
+console.log(detail)
   return (
     <div className="App">
-      <Navbar cart={cart} setCart={setCart}/>
+      <Navbar cart={cart} />
    <Routes>
     <Route path='/' element={<Home/>}/>
-<Route path='/about' element={<About addtocart={addtocart}/>}/>
+<Route path='/about' element={<About name={name} addtocart={addtocart} fooddetail={fooddetail}  />}/>
 <Route path='/contactus' element={<Contactus  />}/>
-<Route path='/detail/:id' element={<Detail/>}/>
+<Route path='/detail' element={<Detail   detail={detail}/>}/>
 <Route path='/blog' element={<Blog/>}/>
 <Route path='*' element={<Notfound/>}/>
    </Routes>

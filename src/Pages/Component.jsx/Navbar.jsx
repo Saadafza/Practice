@@ -3,18 +3,19 @@ function Navbar(props){
 
 
 
-const addquantity = (productId)=>{
+const addquantity = (index)=>{
   const updatedCart= [...props.cart]
-
-  
-  
-}
-
-
-const minusquantity = ()=>{
+    updatedCart[index].quantity += 1
+    props.setCart(updatedCart)
   
 }
-
+const minusquantity = (index)=>{
+  const updatedCart =[...props.cart]
+  if(updatedCart[index].quantity > 1){
+    updatedCart[index].quantity -=1
+    props.setCart(updatedCart)
+  }
+}
     return(
         <>
         <div className="container">
@@ -39,7 +40,7 @@ const minusquantity = ()=>{
           <Link className="nav-link "  to="/blog">Blog</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link "  to="/kgiwuirtu">newpage</Link>
+          <Link className="nav-link "  to="/detail">Detail</Link>
         </li>
        
       </ul>
@@ -47,7 +48,7 @@ const minusquantity = ()=>{
       <li className="nav-item ms-auto">
           <Link className="nav-link position-relative " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" ><i class="ri-shopping-cart-2-fill"></i>
           <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">
-    {props.cart.length}
+  {props.cart.length}
     <span class="visually-hidden">unread messages</span>
   </span>
           </Link>
@@ -59,25 +60,26 @@ const minusquantity = ()=>{
 </nav>
         </div>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+{/* <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
     <h5 id="offcanvasRightLabel">Cart</h5>
     <button type="button" style={{border:"none", backgroundColor:"none"}} class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i class="ri-arrow-left-line"></i></button>
   </div>
   <div class="offcanvas-body">
     {
-      props.cart.map((cart)=>{
+      props.cart.map((cart,index)=>{
         return(
           <>
        <div className="d-flex justify-content-between align-items-center border-bottom mb-2">
         <div className="d-flex aling-items-center">
           <img src={cart.url} alt={cart.title} style={{width:"50px",height:"50px", marginRight:"10px"}}/>
           <span className=" p-2">{cart.title}</span>
+          <span className="p-2">{cart.price * cart.quantity}</span>
         </div>
         <div className="d-flex align-items-center">
           <button
-          className="btn btn=sm btn btn-outline-secondary mr-2"
-          onClick={()=>{addquantity(cart._id)}}
+          className="btn btn-sm btn btn-outline-secondary mr-2"
+          onClick={()=>{addquantity(index)}}
 
           >
     +
@@ -85,8 +87,8 @@ const minusquantity = ()=>{
      
         {cart.quantity}
           <button
-          className="btn btn=sm btn btn-outline-secondary mr-2"
-          onClick={()=>{minusquantity(cart._id)}}
+          className="btn btn-sm btn btn-outline-secondary mr-2"
+          onClick={()=>{minusquantity(index)}}
 
           >
     -
@@ -98,7 +100,7 @@ const minusquantity = ()=>{
       })
     }
   </div>
-</div>
+</div> */}
 
 
         </>

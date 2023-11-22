@@ -19,16 +19,16 @@ axios.get("https://backend-self-delta.vercel.app/api/food")
 })
 
 },[])
-
     return(
         <>
+        
         {
             loading ?(
 <div className="spinner-border" role="status">
   <span className="visually-hidden">Loading...</span>
 </div>
             ):(
-                <div className="container">
+                <div className="container" >
                 <h3 className="card-header bg-primary text-light text-center p-2 rounded mt-3">ALL THE FOOD ITEM</h3>
                       
                         <div className="row">
@@ -43,10 +43,12 @@ axios.get("https://backend-self-delta.vercel.app/api/food")
                   <div className="card-body">
                     <h5 className="card-title">{food.title}</h5>
                     <p className="card-text">{food.description}</p>
-                    <Link to={`/detail/${food._id}`} class="btn btn-primary">Detail Page</Link>
-                    <button className="btn btn-danger" onClick={()=>{props.addtocart(food)}}>Add to cart</button>
+       <p>{props.name}</p>
+                    <Link class="btn btn-primary" onClick={()=>{props.fooddetail(food)}} to="/detail" >Detail Page</Link>
+                    <button className="btn btn-danger" onClick={()=>{props.addtocart(food)}} >Add to cart</button>
                   </div>
                 </div>
+              
                                 </div>
                               
                                 </>
@@ -58,7 +60,6 @@ axios.get("https://backend-self-delta.vercel.app/api/food")
                 </div>
             )
         }
-   
 
 
         </>
