@@ -5,8 +5,11 @@ function Detail (props){
 
     return(
         <>
-     
-{props.detail.title}
+<div className="container">
+    <img src={props.detail.url} alt="image"/>
+    <h1>{props.detail.title}</h1>
+</div>
+
 
         </>
     )
