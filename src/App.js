@@ -8,18 +8,19 @@ import Detail from './Pages/Detail';
 import { useState } from 'react';
 import Home from './Pages/Home';
 import Notfound from './Pages/Notfound';
-
+import Signup from './Pages/Signup';
 function App() {
 const [cart ,setCart]= useState([])
 const [detail, setDetail]= useState()
 
 const addtocart = (food)=>{
-const newarry = [...cart, food]
-setCart(newarry)
+const newcart =[...cart, food]
+setCart(newcart)
 }
 
+
 const fooddetail = (food)=>{
-  setDetail(food)
+ setDetail(food)
 }
 
 
@@ -32,6 +33,7 @@ const fooddetail = (food)=>{
 <Route path='/contactus' element={<Contactus  />}/>
 <Route path='/detail' element={<Detail   detail={detail}/>}/>
 <Route path='/blog' element={<Blog/>}/>
+<Route path='/signup' element={<Signup/>}/>
 <Route path='*' element={<Notfound/>}/>
    </Routes>
 
