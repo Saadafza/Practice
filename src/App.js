@@ -9,6 +9,7 @@ import { useState } from 'react';
 import Home from './Pages/Home';
 import Notfound from './Pages/Notfound';
 import Signup from './Pages/Signup';
+
 function App() {
 const [cart ,setCart]= useState([])
 const [detail, setDetail]= useState()
@@ -36,9 +37,6 @@ const fooddetail = (food)=>{
 <Route path='/signup' element={<Signup/>}/>
 <Route path='*' element={<Notfound/>}/>
    </Routes>
-
-
-
     </div>
   );
 }

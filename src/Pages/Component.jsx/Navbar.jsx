@@ -38,7 +38,9 @@ function Navbar(props){
         <li className="nav-item">
           <Link className="nav-link "  to="/detail">Detail</Link>
         </li>
-       
+        <li className="nav-item">
+          <Link className="nav-link "  to="/logout">Logout</Link>
+        </li>
       </ul>
       <ul className="navbar-nav ms-auto ">
       <li className="nav-item ms-auto" >
