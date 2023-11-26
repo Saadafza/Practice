@@ -45,7 +45,7 @@ axios.get("https://backend-self-delta.vercel.app/api/food")
                     <h5 className="card-title">{food.title}</h5>
                     <p className="card-text">{food.description}</p>
        <p>{props.name}</p>
-                    <Link class="btn btn-primary" onClick={()=>{props.fooddetail(food)}} to="/detail"  >Detail Page</Link>
+                    <Link class="btn btn-primary" to={`/detail/${food._id}`}  >Detail Page</Link>
                     <button className="btn btn-danger" onClick={()=>{props.addtocart(food)}} >Add to cart</button>
                   </div>
                 </div>

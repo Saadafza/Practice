@@ -1,13 +1,17 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 
-function Detail (props){
- 
+function Detail (){
+ const [detail, setDetail]= useState("")
+ useEffect(()=>{
+axios.get("https://backend-self-delta.vercel.app/api/food")
+ },[])
 
     return(
         <>
 <div className="container">
-    <img src={props.detail.url} alt="image"/>
-    <h1>{props.detail.title}</h1>
+  
 </div>
 
 

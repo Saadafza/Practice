@@ -3,13 +3,24 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 function Navbar(props){
 
+const deleteitem = (index)=>{
+const updatecart = [...props.cart]
+updatecart.splice(index,1 )
+props.setCart(updatecart)
+}
+const additem=(index)=>{
+const updatecart =[...props.cart]
+  updatecart[index].quantity +=1
+  props.setCart(updatecart)
+}
 
-
-
-
-
-
-
+const minusitem = (index) =>{
+  const updatecart= [...props.cart]
+  if(updatecart[index].quantity > 1){
+    updatecart[index].quantity -= 1
+    props.setCart(updatecart)
+  }
+}
 
 
     return(
@@ -66,20 +77,38 @@ function Navbar(props){
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {
-      props.cart.map((item)=>{
-        return(
-          <>
-          <ul>
-
-            <li>
-              {item.title}
-            </li>
-          </ul>
-          </>
-        )
-      })
-    }
+   {
+    props.cart.map(( food ,index)=>{
+   return(
+    <>
+    <ul>
+      <li className="d-flex justify-content-between align-items-center">
+       <img src={food.url} alt={food.title} width="50px" />
+       <span className="text-danger">${food.price * food.quantity}</span>
+       <span>{food.title}</span>
+       <i className="ri-delete-bin-line " onClick={()=>{deleteitem(index)}}></i>
+       <div >
+        <i className="ri-file-add-fill" onClick={()=>{additem(index)}}></i>
+       {food.quantity}
+       <i className="ri-subtract-line mx-2" onClick={()=>{minusitem(index)}}></i>
+       </div>
+       
+       
+      </li>
+    </ul>
+    </>
+   )
+    })
+   }
+   {
+    props.cart.map((food , index)=>{
+      return(
+        <>
+        
+        </>
+      )
+    })
+   }
   </div>
 </div>
 

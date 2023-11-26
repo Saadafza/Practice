@@ -34,7 +34,7 @@ const fooddetail = (food)=>{
     <Route path='/' element={<Home/>}/>
 <Route path='/about' element={<About fooddetail={fooddetail}  addtocart={addtocart}/>}/>
 <Route path='/contactus' element={<Contactus  />}/>
-<Route path='/detail' element={<Detail   detail={detail}/>}/>
+<Route path='/detail/:id' element={<Detail/>}/>
 <Route path='/blog' element={<Blog/>}/>
 <Route path='/signup' element={<Signup/>}/>
 <Route path='/login' element={<Login/>}/>
